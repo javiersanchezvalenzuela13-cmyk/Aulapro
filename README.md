@@ -18,5 +18,5 @@ Java, JDBC, MySQL
 - DTO/ Clases de objetos, son las entidades del sistema
 - main.java Clase principal
 - conexion.java Conexión a la base de datos
-- enum/ Enumeraciones con valores fijos
+- enumeracion/ Enumeraciones con valores fijos
 - excepciones/ Excepciones personalizadas
