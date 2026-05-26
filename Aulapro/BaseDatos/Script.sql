@@ -1,4 +1,4 @@
 CREATE DATABASE AULAPRO;
 USE AULAPRO;
 
-CREATE TABLE: 6 --Crear 6 tables e insert
+CREATE TABLE: 5 --Crear 5 tables e insert
