@@ -84,7 +84,7 @@ INSERT INTO CATEGORIA (nombreCategoria, descripcion) VALUES
 ('Preparación de oposiciones', 'Cursos para preparar oposiciones'),
 ('Formación profesional', 'Cursos prácticos orientados a la inserción laboral');
 
---Insert curso
+-- Insert curso
 INSERT INTO CURSO (plazasMax, precio, estado, nombreCurso, horario, duracion, nivel, idCategoria) VALUES
 (20, 180.00, 'Abierto', 'Inglés B1', 'Lunes y Miércoles 17:00-19:00', '3 meses', 'Intermedio', 1),
 (15, 220.00, 'Abierto', 'Java Básico', 'Martes y Jueves 18:00-20:00', '3 meses', 'Inicial', 2),
@@ -92,7 +92,7 @@ INSERT INTO CURSO (plazasMax, precio, estado, nombreCurso, horario, duracion, ni
 (25, 300.00, 'Completo', 'Preparación Oposiciones Auxiliar Administrativo', 'Sábados 09:00-13:00', '4 meses', 'Intermedio', 4),
 (18, 350.00, 'Finalizado', 'Técnico en Redes', 'Lunes a Jueves 19:00-21:00', '5 meses', 'Avanzado', 5);
 
---Insert matrícula
+-- Insert matrícula
 INSERT INTO MATRICULA (importeAbonado, fechaMatricula, estadoMatricula, DNI_alumno, DNI_profesor, idCurso) VALUES
 (180.00, '2024-01-15', 'Activa', '12345678A', '14325839P', 1),
 (220.00, '2024-02-10', 'Activa', '26785912D', '67548734M', 2),
