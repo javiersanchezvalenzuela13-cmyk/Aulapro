@@ -3,11 +3,7 @@
 
 DELIMITER $$
 
-CREATE PROCEDURE registrarMatricula( -- valores de entrada que necesita el procedimiento
-	IN p_DNI_alumno VARCHAR (9),
-	IN p_idCurso INT,
-	IN p_DNI_profesor VARCHAR(9)
-)
+CREATE PROCEDURE registrarMatricula(IN p_DNI_alumno VARCHAR (9), IN p_idCurso INT, IN p_DNI_profesor VARCHAR(9)) -- valores de entrada que necesita el procedimiento
 BEGIN
 	DECLARE v_precio DOUBLE;   -- variable para guardar el precio antes de insertarlo en la matrícula
 
@@ -27,18 +23,9 @@ DELIMITER ;
 --Muestra un listado de las matriculas en orden descendiente del alumno buscado
 DELIMITER $$
 
-CREATE PROCEDURE historialAlumno( -- valor de entrada que necesita el procedimiento
-	IN p_DNI_alumno VARCHAR(9)
-)
+CREATE PROCEDURE historialAlumno(IN p_DNI_alumno VARCHAR(9)) -- valor de entrada que necesita el procedimiento
 BEGIN
-	SELECT	-- Datos a mostrar para cada matricula del alumno
-		m.idMatricula,
-        m.fechaMatricula,
-        m.importeAbonado,
-       	m.estadoMatricula,
-        c.nombreCurso,
-        c.estado,
-        p.nombreProfesor
+	SELECT	m.idMatricula, m.fechaMatricula, m.importeAbonado, m.estadoMatricula, c.nombreCurso, c.estado, p.nombreProfesor -- Datos a mostrar para cada matricula del alumno
 	FROM MATRICULA m 	-- De la tabla MATRICULA , uniendola con CURSO y PROFESOR
 	INNER JOIN CURSO c ON m.idCurso = c.idCurso -- Es Inner join porque la mátricula siempre debe estar asociada a un profesor y un curso
   	INNER JOIN PROFESOR p ON m.DNI_profesor = p.DNI_profesor
