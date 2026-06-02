@@ -1,1 +1,0 @@
--- Crear 2 procedimientos, crear 3 funciones, crear 2 trigger y crear 1 cursor
