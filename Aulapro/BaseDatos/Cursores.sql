@@ -2,6 +2,7 @@
 -- Recorre una a una las matrículas y las muestra con SELECT
 
 DELIMITER $$
+    
 CREATE PROCEDURE mostrarMatriculasAlumno(p_DNI VARCHAR(9))
 BEGIN
     DECLARE v_idMat INT; -- Declara las variables para insertar los valores 
