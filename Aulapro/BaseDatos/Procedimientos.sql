@@ -13,7 +13,7 @@ BEGIN
 
 	-- Insertar una nueva matricula en la tabla MATRICULA
 	INSERT INTO MATRICULA(DNI_alumno, idCurso, DNI_profesor, fechaMatricula, importeAbonado, estadoMatricula)
-	VALUES(p_DNI_alumno, p_idCurso, p_DNI_profesor, NOW(), v_precio, 'Activa');
+	VALUES(p_DNI_alumno, p_idCurso, p_DNI_profesor, CURDATE(), v_precio, 'Activa');
 
 END$$
 DELIMITER ;
