@@ -57,7 +57,7 @@ BEGIN
         	LEFT JOIN MATRICULA m ON c.idCurso = m.idCurso -- Left join para que rellene con null si no existiera una matricula en el curso
        		LEFT JOIN PROFESOR p ON m.DNI_profesor = p.DNI_profesor -- Left join para que rellene con null si no existiera un profesor en la matricula
         	WHERE c.idCurso = p_idCurso -- Del curso con el mismo id que el insertado
-        	GROUP BY c.idCurso, c.nombreCurso, c.plazasMax, p.nombreProfesor;
+        	GROUP BY c.idCurso, c.nombreCurso, c.plazasMax, p.nombreProfesor; -- Para poder combinar columnas normales con el COUNT
     	END IF;
 END$$
 DELIMITER ;
