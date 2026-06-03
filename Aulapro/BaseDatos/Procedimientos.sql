@@ -21,6 +21,7 @@ DELIMITER ;
 
 --Procedimiento 2: Mostrar historial de un alumno
 --Muestra un listado de las matriculas en orden descendiente del alumno buscado
+
 DELIMITER $$
 
 CREATE PROCEDURE historialAlumno(IN p_DNI_alumno VARCHAR(9)) -- Valor de entrada que necesita el procedimiento
@@ -35,4 +36,29 @@ END$$
 
 DELIMITER ;
 
+-- Procedimiento 3: Resumen de un curso
+-- Muestra información completa del curso, incluyendo plazas, matrículas y profesor
+
+DELIMITER $$
+
+CREATE PROCEDURE resumenCurso(IN p_idCurso INT)
+BEGIN
+   	DECLARE v_error INT DEFAULT 0;
+    	-- Handler por si ocurre algún error SQL
+    	DECLARE EXIT HANDLER FOR SQLEXCEPTION 
+    	BEGIN
+        		SELECT 'Error al obtener el resumen del curso' AS mensaje;
+        		SET v_error = 1;
+    	END;
+
+    	IF v_error = 0 THEN -- Si no ha saltado error selecciona estos datos de la tabla curso, matrícula y profesor
+			SELECT c.nombreCurso AS Curso, c.plazasMax AS PlazasRestantes, COUNT(m.idMatricula) AS TotalMatriculas, p.nombreProfesor AS Profesor
+        	FROM CURSO c
+        	LEFT JOIN MATRICULA m ON c.idCurso = m.idCurso -- Left join para que rellene con null si no existiera una matricula en el curso
+       		LEFT JOIN PROFESOR p ON m.DNI_profesor = p.DNI_profesor -- Left join para que rellene con null si no existiera un profesor en la matricula
+        	WHERE c.idCurso = p_idCurso -- Del curso con el mismo id que el insertado
+        	GROUP BY c.idCurso, c.nombreCurso, c.plazasMax, p.nombreProfesor;
+    	END IF;
+END$$
+DELIMITER ;
 	
