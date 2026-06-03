@@ -53,7 +53,7 @@ END$$
 DELIMITER ;
 
 -- Función 4: Obtener el nombre completo del profesor que imparte un curso
--- Devuelve un VARCHAR con el nombre y apellidos del profesor asignado
+-- Devuelve un VARCHAR con el nombre del profesor asignado al curso
 
 DELIMITER $$
 
@@ -61,12 +61,13 @@ CREATE FUNCTION nombreProfesorCurso(p_idCurso INT)
 RETURNS VARCHAR(100)
 DETERMINISTIC
 BEGIN
-    DECLARE v_nombreCompleto VARCHAR(100); -- Declara la variable en la que se insertará nombre y apellidos
-    SELECT CONCAT(p.nombre, ' ', p.apellidos) INTO v_nombreCompleto -- Concatena los dos datos en la variable
+    DECLARE v_nombre VARCHAR(100); -- Declara la variable
+
+    SELECT p.nombreProfesor INTO v_nombre --Inserta el nombre en la variable
     FROM PROFESOR p
     INNER JOIN CURSO c ON p.DNI_profesor = c.DNI_profesor
-    WHERE c.idCurso = p_idCurso; -- Del profesor que tiene el mismo id de curso que el introducido
-    RETURN v_nombreCompleto; -- Devuelve la variable
+    WHERE c.idCurso = p_idCurso; -- Del curso con el mismo id que el insertado
+    RETURN v_nombre; -- Devuelve la variable
 END$$
 
 DELIMITER ;
