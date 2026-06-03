@@ -63,10 +63,11 @@ DETERMINISTIC
 BEGIN
     DECLARE v_nombre VARCHAR(100); -- Declara la variable
 
-    SELECT p.nombreProfesor INTO v_nombre --Inserta el nombre en la variable
+    SELECT p.nombreProfesor INTO v_nombre -- Inserta el nombre en la variable
     FROM PROFESOR p
-    INNER JOIN CURSO c ON p.DNI_profesor = c.DNI_profesor
-    WHERE c.idCurso = p_idCurso; -- Del curso con el mismo id que el insertado
+    INNER JOIN MATRICULA m ON p.DNI_profesor = m.DNI_profesor -- Une la tabla matrícula y profesor
+    WHERE m.idCurso = p_idCurso -- Del curso con el mismo id que el insertado
+    LIMIT 1;
     RETURN v_nombre; -- Devuelve la variable
 END$$
 
