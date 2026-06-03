@@ -20,7 +20,7 @@ BEGIN
 
     -- Si aún quedan plazas, dejar el estado como disponible
     UPDATE CURSO
-    SET estado = 'Disponible'
+    SET estado = 'Abierto'
     WHERE idCurso = NEW.idCurso
       AND plazasMax > 0;
 END$$
@@ -44,7 +44,7 @@ BEGIN
 
     -- Si el curso estaba completo y ahora tiene al menos 1 plaza, ponerlo como disponible
     UPDATE CURSO
-    SET estado = 'Disponible'
+    SET estado = 'Abierto'
     WHERE idCurso = OLD.idCurso
       AND plazasMax = 1;
 END$$
